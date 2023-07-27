@@ -29,12 +29,14 @@ const MovieDetails = () => {
     <>
     <Link to={backLinkHref}>Go to back</Link>
       <div>
+      {movie.poster_path && (
         <img
           src={`https://image.tmdb.org/t/p/original/${movie.poster_path}` }
           alt={movie.original_title}
           width="200"
           height="300"
         />
+      )}
         <div>
           <h2>{movie.original_title}</h2>
           <p>User score: {Math.round(movie.vote_average * 10)} %</p>

@@ -26,14 +26,17 @@ export const Reviews = () => {
 
   return (
     <div>
-        
-       {review.length !== 0 ? (review.map(rev => (
-        <div key={rev.id}>
-          <h4>{rev.author}</h4>
-          <p>{rev.content}</p>
-        </div>
-      ))) : ('We don`t have ahy reviews for this movie')} 
-      
+      {review.length !== 0
+        ? review.map(rev => (
+            <div key={rev.id}>
+              <h4>{rev.author}</h4>
+              <p>{rev.content}</p>
+            </div>
+          ))
+        : 'We don`t have ahy reviews for this movie'}
     </div>
   );
 };
+
+export default Reviews
+

@@ -20,18 +20,20 @@ export const Cast = () => {
 
   useEffect(() => {
     fetchMovieCast();
-  }, []);
+  }, [] );
 
   return (
     <div>
       <ul>
         {cast.map(actor => (
           <li key={actor.id}>
-            <img
-              src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`}
-              alt=""
-              width="100"
-            />
+            {actor.profile_path && (
+                <img
+                src={`https://image.tmdb.org/t/p/original/${actor.profile_path}`}
+                alt=""
+                width="100"
+                />
+            )}
             <p>{actor.name}</p>
             <p>Character : {actor.character}</p>
           </li>
@@ -40,3 +42,5 @@ export const Cast = () => {
     </div>
   );
 };
+
+export default Cast
