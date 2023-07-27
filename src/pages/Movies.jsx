@@ -18,7 +18,6 @@ const Movies = () => {
   const handleSubmit = event => {
     event.preventDefault();
     const searchValue = event.target.children.search.value;
-    console.log(searchValue);
     setSearchParams({
       query: searchValue,
     });
