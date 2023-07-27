@@ -20,7 +20,7 @@ export const Reviews = () => {
 
   useEffect(() => {
     fetchMovieReview();
-  }, []);
+  }, [movieId]);
 
   console.log(review);
 
