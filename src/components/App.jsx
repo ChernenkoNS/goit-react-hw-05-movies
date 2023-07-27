@@ -19,7 +19,7 @@ const Reviews = lazy(() => import('./Reviews'))
 export const App = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <Routes>
+      <Routes basename="/goit-react-hw-05-movies">
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="movies" element={<Movies />} />
