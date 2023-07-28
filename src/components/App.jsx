@@ -1,12 +1,7 @@
-// import MovieDetails from 'components/MovieDetails';
 import { Layout } from './Layout';
-// import Home from 'pages/Home';
-// import Movies from 'pages/Movies';
 import { NotFound } from 'pages/NotFound';
 import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-// import { Cast } from './Cast';
-// import { Reviews } from './Reviews';
 
 const Home = lazy(() => import('pages/Home'))
 const Movies = lazy(() => import('pages/Movies'))

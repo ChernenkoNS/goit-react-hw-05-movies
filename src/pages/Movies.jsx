@@ -29,10 +29,14 @@ const Movies = () => {
         const response = await axios.get(
           `https://api.themoviedb.org/3/search/movie?query=${searchMovie}&api_key=${API_KEY}`
         );
-
-        setMovName(response.data.results);
+        if (response.data.results) {
+          setMovName(response.data.results);
+        } else {
+          setMovName([]);
+        }
       } catch (error) {
         console.log(` Error  ${error}`);
+        setMovName([]);
       }
     }
     fetchMovieCast();
@@ -58,4 +62,4 @@ const Movies = () => {
   );
 };
 
-export default Movies
+export default Movies;

@@ -1,41 +1,45 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState({});
   const { movieId } = useParams();
-  const location = useLocation()
-  const backLinkHref = location.state?.from ?? "/"
-  
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
 
-  async function fetchMovieById() {
+  const fetchMovieById = useCallback(async () => {
     try {
       const response = await axios.get(
         `https://api.themoviedb.org/3/movie/${movieId}?api_key=41b8f9437bf3f899281f8a3f9bdc0891`
       );
-      setMovie(response.data);
+      if (response.data) {
+        setMovie(response.data);
+      } else {
+        setMovie([]);
+      }
     } catch (error) {
       console.log(` Error  ${error}`);
+      setMovie([]);
     }
-  }
+  }, [movieId]);
 
   useEffect(() => {
     fetchMovieById();
-  }, [movieId]);
+  }, [fetchMovieById]);
 
   return (
     <>
-    <Link to={backLinkHref}>Go to back</Link>
+      <Link to={backLinkHref}>Go to back</Link>
       <div>
-      {movie.poster_path && (
-        <img
-          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}` }
-          alt={movie.original_title}
-          width="200"
-          height="300"
-        />
-      )}
+        {movie.poster_path && (
+          <img
+            src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+            alt={movie.original_title}
+            width="200"
+            height="300"
+          />
+        )}
         <div>
           <h2>{movie.original_title}</h2>
           <p>User score: {Math.round(movie.vote_average * 10)} %</p>
