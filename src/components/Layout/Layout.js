@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
+import css from '../Layout/Layout.module.css'
 
 const StyledLink = styled(NavLink)`
   color: black;
@@ -13,7 +14,7 @@ const StyledLink = styled(NavLink)`
 export const Layout = () => {
   return (
     <div>
-      <header>
+      <header className={css.header}>
         <StyledLink to="/">Home</StyledLink>
         <StyledLink to="/movies">Movies</StyledLink>
       </header>

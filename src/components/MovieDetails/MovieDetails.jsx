@@ -1,6 +1,18 @@
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
+import { styled } from 'styled-components';
+import css from '../MovieDetails/MovieDetails.module.css'
+
+const StyledLink = styled(NavLink)`
+  color: black;
+  text-decoration: none;
+
+
+  &:hover {
+    color: red;
+  }
+`;
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState({});
@@ -30,7 +42,7 @@ const MovieDetails = () => {
 
   return (
     <>
-      <Link to={backLinkHref}>Go to back</Link>
+      <div className={css.button}><StyledLink to={backLinkHref}>Go to back</StyledLink></div>
       <div>
         {movie.poster_path && (
           <img
