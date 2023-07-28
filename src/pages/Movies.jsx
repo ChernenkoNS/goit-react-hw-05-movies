@@ -10,10 +10,8 @@ const Movies = () => {
   const [movName, setMovName] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchMovie = searchParams.get('query');
-  console.log(searchMovie);
 
   const location = useLocation();
-  console.log(location);
 
   const handleSubmit = event => {
     event.preventDefault();

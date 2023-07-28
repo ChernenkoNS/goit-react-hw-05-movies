@@ -7,7 +7,6 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation()
   const backLinkHref = location.state?.from ?? "/"
-  console.log(location.state );
   
 
   async function fetchMovieById() {
